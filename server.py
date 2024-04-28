@@ -9,6 +9,11 @@
 # Or to set CN, SAN and/or create a cert signed by your own root CA: https://thegreycorner.com/pentesting_stuff/writeups/selfsignedcert.html
 
 
+#Lena stuff
+#C:\Users\lenad\Desktop\XRPMimic\XRPCode\XRPCode
+#netsh http add iplisten 127.0.0.1
+#
+
 import http.server
 import ssl
 
@@ -29,5 +34,8 @@ class CORSRequestHandler(http.server.SimpleHTTPRequestHandler):
         return super(CORSRequestHandler, self).end_headers()
 
 httpd = http.server.HTTPServer(('127.0.0.1', 443), CORSRequestHandler)
+httpd.extensions_map.update({
+      ".js": "application/javascript",
+})
 httpd.socket = ssl.wrap_socket (httpd.socket, certfile='./dummy.pem', server_side=True)
 httpd.serve_forever()

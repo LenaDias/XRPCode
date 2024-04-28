@@ -315,6 +315,20 @@ document.getElementById("IDViewCM").onclick = async (event) =>{
     await EDITORS[id].onConvert(EDITORS[id].EDITOR_PATH, EDITORS[id].getValue(), id);
 }
 
+document.getElementById("IDViewVCSharp").onclick = (event) =>{
+    UIkit.dropdown(VIEW_DROPDOWN).hide();
+    document.getElementById("view-csharp-button").onclick = (ev) => {
+        opAce.destroy();
+    };
+    opAce = ace.edit("view-csharp-ace");
+    opAce.session.setMode("ace/mode/csharp");
+    opAce.setReadOnly(true);
+    opAce.setTheme("ace/theme/tomorrow_night_bright");
+    let id = localStorage.getItem("activeTabId");
+    opAce.setValue(EDITORS[id].getValue(), 1);
+    UIkit.modal(document.getElementById("view-csharp-code")).show();
+}
+
 // View Menu ACE Support
 
 

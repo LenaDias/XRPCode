@@ -23,3 +23,6 @@ Thumbs.db
 
 # extensions
 .micropico
+server.pem
+__pycache__/server.cpython-37.pyc
+dummy.pem
