@@ -325,7 +325,7 @@ document.getElementById("IDViewVCSharp").onclick = (event) =>{
     opAce.setReadOnly(true);
     opAce.setTheme("ace/theme/tomorrow_night_bright");
     let id = localStorage.getItem("activeTabId");
-    opAce.setValue(EDITORS[id].getValue(), 1);
+    opAce.setValue(EDITORS[id].getCSharp(), 1);
     UIkit.modal(document.getElementById("view-csharp-code")).show();
 }
 

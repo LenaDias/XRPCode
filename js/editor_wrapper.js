@@ -660,10 +660,24 @@ class EditorWrapper{
     // Expose common Ace editor operation
     getValue(){
         if(this.isBlockly){
-            return (this.blockly_fix_for_micropython(
-                  Blockly.Python.workspaceToCode(this.BLOCKLY_WORKSPACE))
-                   );
-        }else{
+                return (this.blockly_fix_for_micropython(
+                        Blockly.Python.workspaceToCode(this.BLOCKLY_WORKSPACE))
+                );
+
+
+        }
+        else{
+            return this.ACE_EDITOR.getValue();
+        }
+    }
+
+    // Expose common Ace editor operation
+    // Generate C# from existing Blockly for XRPMimic in Unity
+    getCSharp(){
+        if(this.isBlockly){
+            Blockly.CSharp.workspaceToCode(this.BLOCKLY_WORKSPACE);
+        }
+        else{
             return this.ACE_EDITOR.getValue();
         }
     }

@@ -1,10 +1,15 @@
 'use strict';
 
+/*
+Old code using goog
 goog.provide('Blockly.CSharp');
 
 goog.require('Blockly.Generator');
+*/
 
 Blockly.CSharp = new Blockly.Generator('CSharp');
+
+//Blockly.CSharp = new Blockly.Generator('CSharp');
 
 Blockly.CSharp.addReservedWords(
     //http://msdn.microsoft.com/en-us/library/x53a06bb.aspx
@@ -60,7 +65,7 @@ Blockly.CSharp.init = function() {
     }
 
     var defvars = [];
-    var variables = Blockly.Variables.allVariables();
+    var variables = Blockly.Variables.getAllVariables();
     for (var x = 0; x < variables.length; x++) {
       defvars[x] = 'dynamic ' +
           Blockly.CSharp.variableDB_.getName(variables[x],
