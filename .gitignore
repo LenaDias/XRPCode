@@ -27,3 +27,4 @@ server.pem
 __pycache__/server.cpython-37.pyc
 dummy.pem
 /js/xterm
+/node_modules
