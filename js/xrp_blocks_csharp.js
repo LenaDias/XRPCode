@@ -6,8 +6,7 @@ Blockly.CSharp['xrp_motor_effort'] = function (block) {
   var index = block.getFieldValue("MOTOR");
   CS.definitions_[`motor${index}_setup`] = `motor${index} = EncodedMotor.get_default_encoded_motor(${index})`;
   var value_effort = Blockly.CSharp.valueToCode(block, 'effort', Blockly.CSharp.ORDER_ATOMIC);
-  //var code = `motor${index}.set_effort(${value_effort})\n`;
-  var code = `lmaooo\n`;
+  var code = `botor${index}.set_effort(${value_effort})\n`;
   return code;
 };
 

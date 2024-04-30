@@ -1,15 +1,33 @@
-'use strict';
+//import * as Blockly from './blockly.min.js';
 
-/*
-Old code using goog
-goog.provide('Blockly.CSharp');
+//Old goog dependencies
+//goog.provide('Blockly.CSharp');
 
-goog.require('Blockly.Generator');
-*/
+//goog.require('Blockly.Generator');
 
-Blockly.CSharp = new Blockly.Generator('CSharp');
+/* eslint-disable */
+;(function(root, factory) {
+  if (typeof define === 'function' && define.amd) { // AMD
+    define(['./core', './csharp_compressed.js'], factory);
+  } else if (typeof exports === 'object') { // Node.js
+    module.exports = factory(require('./core'), require('./csharp_compressed.js'));
+  } else { // Browser
+    root.BlocklyCSharp = factory(root.Blockly, root.BlocklyCSharp);
+  }
+}(this, function(Blockly, BlocklyCSharp) {
+  /**
+   * @license
+   * Copyright 2020 Google LLC
+   * SPDX-License-Identifier: Apache-2.0
+   */
 
-//Blockly.CSharp = new Blockly.Generator('CSharp');
+  /**
+   * @fileoverview CSharp generator module; just a wrapper for
+   *     csharp_compressed.js.
+   */
+
+  return BlocklyCSharp;
+}));
 
 Blockly.CSharp.addReservedWords(
     //http://msdn.microsoft.com/en-us/library/x53a06bb.aspx
@@ -73,6 +91,8 @@ Blockly.CSharp.init = function() {
     }
     Blockly.CSharp.definitions_['variables'] = defvars.join('\n');
   }
+
+
 };
 
 /* Prepend the generated code with the variable definitions. */
