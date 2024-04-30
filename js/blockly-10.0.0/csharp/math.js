@@ -4,7 +4,7 @@ Blockly.CSharp.math = {};
 
 Blockly.CSharp.math_number = function() {
   // Numeric value.
-  var code = window.parseFloat(this.getTitleValue('NUM'));
+  var code = window.parseFloat(this.getFieldValue('NUM'));
   return [code, Blockly.CSharp.ORDER_ATOMIC];
 };
 

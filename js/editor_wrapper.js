@@ -675,7 +675,7 @@ class EditorWrapper{
     // Generate C# from existing Blockly for XRPMimic in Unity
     getCSharp(){
         if(this.isBlockly){
-            Blockly.CSharp.workspaceToCode(this.BLOCKLY_WORKSPACE);
+            return Blockly.CSharp.workspaceToCode(this.BLOCKLY_WORKSPACE);
         }
         else{
             return this.ACE_EDITOR.getValue();

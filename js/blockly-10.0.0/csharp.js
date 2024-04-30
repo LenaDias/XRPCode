@@ -1,33 +1,6 @@
-//import * as Blockly from './blockly.min.js';
+'use strict';
 
-//Old goog dependencies
-//goog.provide('Blockly.CSharp');
-
-//goog.require('Blockly.Generator');
-
-/* eslint-disable */
-;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) { // AMD
-    define(['./core', './csharp_compressed.js'], factory);
-  } else if (typeof exports === 'object') { // Node.js
-    module.exports = factory(require('./core'), require('./csharp_compressed.js'));
-  } else { // Browser
-    root.BlocklyCSharp = factory(root.Blockly, root.BlocklyCSharp);
-  }
-}(this, function(Blockly, BlocklyCSharp) {
-  /**
-   * @license
-   * Copyright 2020 Google LLC
-   * SPDX-License-Identifier: Apache-2.0
-   */
-
-  /**
-   * @fileoverview CSharp generator module; just a wrapper for
-   *     csharp_compressed.js.
-   */
-
-  return BlocklyCSharp;
-}));
+export const csharpGenerator = new Blockly.Generator('CSharp');
 
 Blockly.CSharp.addReservedWords(
     //http://msdn.microsoft.com/en-us/library/x53a06bb.aspx
@@ -83,11 +56,11 @@ Blockly.CSharp.init = function() {
     }
 
     var defvars = [];
-    var variables = Blockly.Variables.getAllVariables();
+    var variables = Blockly.getMainWorkspace().getAllVariables();
     for (var x = 0; x < variables.length; x++) {
       defvars[x] = 'dynamic ' +
-          Blockly.CSharp.variableDB_.getName(variables[x],
-          Blockly.Variables.NAME_TYPE) + ';';
+          Blockly.CSharp.variableDB_.getName(variables[x].name,
+              Blockly.Names.NameType.VARIABLE) + ';';
     }
     Blockly.CSharp.definitions_['variables'] = defvars.join('\n');
   }
